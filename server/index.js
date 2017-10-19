@@ -1,8 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const logger = require('morgan');
 
 const boardController = require('./controllers/board-controller');
+
+const ENV = app.get('env');
+
+if (ENV === 'development') app.use(logger('dev'));
 
 let PORT = 8080;
 
@@ -49,9 +54,7 @@ app.post('/win/:name',
   }
 );
 
-app.listen(PORT, () => {
-  console.log(`listening on ${PORT}`);
-});
-
+// If in test enviroment do not start the server here
+if (ENV !== 'test') app.listen(PORT, () => console.log(`Server running on ${PORT}`));
 
 module.exports = app;
