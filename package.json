@@ -4,6 +4,7 @@
   "description": "A React/express bingo application",
   "main": "index.js",
   "scripts": {
+    "build": "webpack",
     "webpack": "webpack-dev-server",
     "start-dev": "nodemon server/index.js",
     "test": "NODE_ENV=test jest"
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/wcbarnes/bingo#readme",
   "dependencies": {
+    "axios": "^0.16.2",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "immutable": "^3.8.2",
