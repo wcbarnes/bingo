@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const logger = require('morgan');
 
+const app = express();
+
 const boardController = require('./controllers/board-controller');
 
 const ENV = app.get('env');
@@ -11,7 +13,6 @@ if (ENV === 'development') app.use(logger('dev'));
 
 let PORT = 8080;
 
-const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -25,15 +26,15 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(`${__dirname}/../index.html`));
 });
 
-app.get('/board/:name',
+app.post('/board/:name',
   boardController.resetBoard,
   boardController.createBoard,
   (req, res) => {
-    res.send({ board: req.locals.board });
+    res.status(201).send({ board: req.locals.board });
   }
 );
 
-app.get('/currentboard/:name',
+app.get('/board/:name',
   boardController.getCurrentBoard,
   (req, res) => {
     res.send({ board: req.locals.board });
