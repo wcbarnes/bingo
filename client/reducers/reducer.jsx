@@ -25,9 +25,7 @@ export default function (state = INITIAL_STATE, action) {
         numbers => numbers.push(action.payload));
 
     case 'SET_NAME':
-      return state.set({
-        name: action.payload
-      });
+      return state.set('name', action.payload.name);
 
     case 'CHECK_WIN_SUCCESS':
       return state.merge({
