@@ -28,9 +28,7 @@ export default function (state = INITIAL_STATE, action) {
       return state.set('name', action.payload.name);
 
     case 'CHECK_WIN_SUCCESS':
-      return state.merge({
-        win: action.payload
-      });
+      return state.set('win', action.payload);
 
     default: return state;
   }
