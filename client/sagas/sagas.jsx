@@ -35,36 +35,36 @@ const checkWinRequest = payload => {
     .catch(error => console.log(error));
 }
 
-function* createBoard(payload) {
+function* createBoard(action) {
   try {
-    const board = yield createBoardRequest(payload);
+    const board = yield createBoardRequest(action.payload);
     yield put({ type: 'CREATE_BOARD_SUCCESS', payload: board });
   } catch (error) {
     yield put({ type: 'CREATE_BOARD_FAILURE' });
   }
 }
 
-function* getBoard(payload) {
+function* getBoard(action) {
   try {
-    const board = yield getBoardRequest(payload);
+    const board = yield getBoardRequest(action.payload);
     yield put({ type: 'GET_BOARD_SUCCESS', payload: board });
   } catch (error) {
     yield put({ type: 'GET_BOARD_FAILURE' });
   }
 }
 
-function* getBall(payload) {
+function* getBall(action) {
   try {
-    const ball = yield getBallRequest(payload);
+    const ball = yield getBallRequest(action.payload);
     yield put({ type: 'GET_BALL_SUCCESS', payload: ball });
   } catch (error) {
     yield put({ type: 'GET_BALL_FAILURE' });
   }
 }
 
-function* checkWin(payload) {
+function* checkWin(action) {
   try {
-    const win = yield checkWinRequest(payload);
+    const win = yield checkWinRequest(action.payload);
     yield put({ type: 'CHECK_WIN_SUCCESS', payload: win });
   } catch (error) {
     yield put({ type: 'CHECK_WIN_FAILURE' });

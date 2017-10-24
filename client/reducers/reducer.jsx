@@ -1,9 +1,9 @@
 import { Map, List } from 'immutable';
 
 const INITIAL_STATE = Map({
-  board: List([]),
+  board: List(Array.from({ length: 25 }, () => '-')),
   numbersDrawn: List([]),
-  name: null,
+  name: 'guest',
   win: false
 });
 
