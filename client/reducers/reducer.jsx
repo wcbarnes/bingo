@@ -25,7 +25,7 @@ export default function (state = INITIAL_STATE, action) {
         numbers => numbers.push(action.payload));
 
     case 'SET_NAME':
-      return state.merge({
+      return state.set({
         name: action.payload
       });
 
