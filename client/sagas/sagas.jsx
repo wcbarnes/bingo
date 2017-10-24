@@ -2,16 +2,16 @@ import { takeLatest } from 'redux-saga';
 import axios from 'axios';
 import { put } from 'redux-saga/effects';
 
-const CREATE_BOARD = 'localhost:8090/board/';
-const GET_BOARD = 'localhost:8090/board/'
-const GET_BALL = 'localhost:8090/ball/'
-const CHECK_WIN = 'localhost:8090/win/'
+const CREATE_BOARD = 'board/';
+const GET_BOARD = 'board/'
+const GET_BALL = 'ball/'
+const CHECK_WIN = 'win/'
 
 // I initially had a closure for all of these functions, but it was dificult to read. These are easy to read but definitely not DRY.
 
 const createBoardRequest = payload => {
   return axios.post(`${CREATE_BOARD}${payload.name}`)
-    .then(res => response.data.board)
+    .then(res => res.data.board)
     .catch(error => console.log(error));
 }
 
